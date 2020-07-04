@@ -1,0 +1,213 @@
+/*
+
+CSS
+
+Cascating Style Sheet
+---------------------------------------------------
+*/
+
+/* BOX MODEL / MODELO DE CAIXA
+
+-Toda caixa tem, por ser um objeto:
+altura , largura, espaçamento(margem), preenchimento, 
+bordas, cor, fundo, maneira que é  vista pelo html, 
+posicionamento, alinhamentos (DISPLAY: meneira de exibir)
+
+-Essa caixa são aqueles quadrados coloridos do F12
+
+-Maneira de exibição das caixas, existem vários tipos de display (principais): 
+    -INLINE: ocupa somente o tamanho da caixa, só vai ficar ao
+            lado do outro com dois elemtnos inline
+    -BLOCK: que ocupa a linha inteira
+---------------------------------------------------
+*/
+
+/*Refencia a raiz dodocumento
+ -Prorpiedades que poderão ser repetida em formatos de variáveis
+ -Então usa-se o nome --TITLE-COLOR no decorrer do coucmento todo, (ATALHO) 
+ -Se precisar mudar a cor, não precisará mudar cada um dos lugares somente essa referência*/
+:root {
+    --title-color: #322153;
+    --primary-color: #34e282;
+}
+
+/*Dia 1) 1:28:30 
+"*": Referencia todos os seletores (atalho para todos)*/
+* {
+    margin: 0;
+    padding: 0;
+    /*zerar todos os espaços parões da página*/
+    /*tirou margem de tudo*/
+}
+
+html  {
+    font-family: Roboto, sans-serif;
+    /*quando tem só uma fonte não precisa de ""*/
+}
+/*duas primeiras casas decimais vai de 0 - F, 
+sendo 00 a ausência de cor, e FF a maior 
+força dessa cor
+
+-Formato hexadeciamal que referecia uma cor RGB
+
+#ff  = RED
+ ff  = GREEN
+ ff; = BLUE
+*/
+body {
+    background: #f0f0f5;
+    -webkit-font-smoothing: antialiased; 
+}
+
+/*todos os elementos A tira-se a linha de baixo*/
+a {
+    text-decoration: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family:Ubuntu, sans-serif;
+    color: var(--title-color);
+}
+
+/*no-repeat pois o background vai querer se repetir*/
+#page-home {
+    height: 100vh; /*Viewport: é o espaço da tela do site q a pessoa está vendo*/
+    background: url("../assets/3165193-covid-protection-equipment/027-medical\ assistance.svg") no-repeat;
+    background-position: 60vw bottom;
+}
+
+#page-home .content {
+    width: 90%;
+    max-width: 1100px;
+    /*Dia 1) 1:29:00*/
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+#page-home header{
+    margin-top: 48px;
+    font-size: 25px;
+    display: flex; 
+    align-items: center;
+    justify-content: space-between;
+}
+
+#page-home header a {
+    display: flex;
+    color: var(--title-color);
+    font-weight: 700; 
+}
+
+#page-home header a span {
+    margin-right: 16px;
+    display: flex;
+    background-image: url("../assets/3165193-covid-protection-equipment/011-foot.svg");
+    /* ainda não é o suficiente salvar pois precisa de uma altura e largura*/
+    
+    width: 20px;
+    height: 20px;
+    
+    /* ainda não é o suficiente salvar pois precisa modificar o tipo de display
+    
+       ai no caso o SPAN é legal, mas não funciona pra mostras imagem
+       então usa-se o display flex
+    */    
+}
+
+#page-home main {
+    max-width: 560px;
+    flex: 1;
+    /*pega oespaço restante e preenche*/
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#page-home main h1 {
+    font-size: 54px;
+}
+
+#page-home main p {
+    font-size: 24px;
+    line-height: 40px;
+    margin-top: 24px;
+}
+
+#page-home main a {
+    width: 100%;
+    max-width: 360px;
+    height: 72px;
+    /*Dia 1) 1:38:20*/
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    margin-top: 40px;
+    background-color: var(--primary-color);
+    transition: 400ms;
+}
+
+#page-home main a:hover {
+    background-color: #30c877;
+}
+
+#page-home main a span {
+    width: 72px;
+    height: 72px;
+    border-radius: 20px 0 0 20px;
+    /*Dia 1)1:42:20*/
+    background-color: rgba(0,0,0,0.10);
+    /*RGBA: "rgb" no formato numérico com o "a"(alpha) que é a  transparencia
+    -No formato numérico vaia de 0 a 255 pra cada um
+    -Alpha vai de 0 a 1 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/*PSEUDOELEMENTOS - criar elementos
+-São elementos quenão tem no HTML mas cria-se no CSS
+-Dia 1) 1:44:20 */
+#page-home main a span::after {
+    content: "";
+    background-image: url("../assets/3165193-covid-protection-equipment/018-syringe.svg");
+    width: 0.01px;
+    height: 0.01px;
+}
+
+#page-home main a strong {
+    /*Dia 1) 1:46:25 e 1:48:30*/
+    flex: 1;
+    font-size: 30px;
+    color: white;
+    text-align: center;
+}
+
+/*MEDIA: no CSS é um conjunto de regras para algumas configurações
+ -Dia 1) 1:49:21*/
+@media  (max-width: 900px) {
+    body
+    #page-home {
+        background-position-x: 700vw;
+    }
+
+    #page-home .content {
+        align-items: center;
+        text-align: center;
+    }
+    img {
+        width: 100%;
+        height: 100%;
+    }
+    #page-home header a {
+        position: absolute;
+        bottom: 48px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    /*como os conteúdos são display flex*/
+    #page-home main {
+         align-items: center;
+    }
+}
